@@ -5,11 +5,17 @@ import LoginPage from './pages/LoginPage';
 import Settings from './pages/SettingsPage';
 import ProfilePage from './pages/ProfilePage';
 
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useAuthStore } from './store/authStore';
+import { useAuthStore } from './store/useAuthStore.js';
 
 const App = () => {
-  const { authUser } = useAuthStore();
+  const { authUser, checkAuth } = useAuthStore();
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  console.log('authUser', { authUser });
   return (
     <div>
       <Navbar />
