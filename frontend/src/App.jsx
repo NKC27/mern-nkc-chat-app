@@ -8,6 +8,8 @@ import ProfilePage from './pages/ProfilePage';
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useAuthStore } from './store/useAuthStore.js';
+import { Loader } from 'lucide-react';
+import { Navigate } from 'react-router-dom';
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -27,11 +29,27 @@ const App = () => {
     <div>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/signup" element={<SignUpPage />} />
-        <Route exact path="/login" element={<LoginPage />} />
+        <Route
+          exact
+          path="/"
+          element={authUser ? <HomePage /> : <Navigate to="/login" />}
+        />
+        <Route
+          exact
+          path="/signup"
+          element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
+        />
+        <Route
+          exact
+          path="/login"
+          element={!authUser ? <LoginPage /> : <Navigate to="/" />}
+        />
         <Route exact path="/settings" element={<Settings />} />
-        <Route exact path="/profile" element={<ProfilePage />} />
+        <Route
+          exact
+          path="/profile"
+          element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
+        />
       </Routes>
     </div>
   );
