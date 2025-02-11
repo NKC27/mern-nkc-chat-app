@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar';
-import HomePage from './pages/Homepage';
+import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import Settings from './pages/SettingsPage';
@@ -10,12 +10,19 @@ import { Routes, Route } from 'react-router-dom';
 import { useAuthStore } from './store/useAuthStore.js';
 
 const App = () => {
-  const { authUser, checkAuth } = useAuthStore();
+  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
 
   console.log('authUser', { authUser });
+
+  if (isCheckingAuth && !authUser)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loader className="size=10 animate-spin" />
+      </div>
+    );
   return (
     <div>
       <Navbar />
