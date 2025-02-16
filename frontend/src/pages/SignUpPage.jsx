@@ -64,7 +64,7 @@ const SignUpPage = () => {
               </p>
             </div>
           </div>
-
+          {/* FORM inputs area */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="form-control">
               <label className="label">
