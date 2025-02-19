@@ -1,6 +1,6 @@
 # MERN NKC Chat Application
 
-![Chat App Screenshot](public/chat-app-screenshot.png)
+![Chat App Screenshot](https://res.cloudinary.com/dsjbd8hqv/image/upload/v1739963359/nkc_chat_app_screenshot_ucx7gk.png)
 
 A real-time chat application built with the MERN stack (MongoDB, Express.js, React, Node.js). This app allows users to register, log in, and chat in real-time with other users. The application is deployed on Render and can be accessed live [here](https://mern-nkc-chat-app.onrender.com/login).
 
